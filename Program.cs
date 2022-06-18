@@ -13,8 +13,8 @@ builder.Services.AddSwaggerGen();
 
 var sqlConBuilder = new SqlConnectionStringBuilder();
 sqlConBuilder.ConnectionString= builder.Configuration.GetConnectionString("SQLDbConnection");
-sqlConBuilder.UserID=builder.Configuration["UserId"];
-sqlConBuilder.Password=builder.Configuration["Password"];
+//sqlConBuilder.UserID=builder.Configuration["UserId"];
+//sqlConBuilder.Password=builder.Configuration["Password"];
 
 builder.Services.AddDbContext<AppDbContext>(opt =>opt.UseSqlServer(sqlConBuilder.ConnectionString));
 
@@ -75,4 +75,10 @@ mkdir folderName
 https://www.youtube.com/watch?v=5YB49OEmbbE&t=2s&ab_channel=LesJackson ->51.09
 dotnet user-secrets set "UserId" "sa"
 dotnet user-secrets set "Password" "pa55w0rd!"
+
+
+dotnet ef migrations add initialmigration
+dotnet tool install --global dotnet-ef
+dotnet ef migrations add initialmigration
+dotnet ef database update
 */
