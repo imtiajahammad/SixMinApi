@@ -17,7 +17,7 @@ sqlConBuilder.ConnectionString= builder.Configuration.GetConnectionString("SQLDb
 //sqlConBuilder.Password=builder.Configuration["Password"];
 
 builder.Services.AddDbContext<AppDbContext>(opt =>opt.UseSqlServer(sqlConBuilder.ConnectionString));
-
+builder.Services.AddScoped<ICommandRepo, CommandRepo>();
 
 
 var app = builder.Build();
@@ -81,4 +81,9 @@ dotnet ef migrations add initialmigration
 dotnet tool install --global dotnet-ef
 dotnet ef migrations add initialmigration
 dotnet ef database update
+
+
+dotnet build
+
+
 */
